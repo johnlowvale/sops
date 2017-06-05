@@ -20,7 +20,7 @@
 	  <left>
     <VBox>
         <padding><Insets left="30"></Insets></padding>
-        <Button text="1. Action A" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="1. Action A" onAction="#test" minWidth="200" alignment="CENTER_LEFT"></Button>
         <Button text="2. Action AB" minWidth="200" alignment="CENTER_LEFT"></Button>
         <Button text="3. Action ABC" minWidth="200" alignment="CENTER_LEFT"></Button>
         <Button text="4. Action X" minWidth="200" alignment="CENTER_LEFT"></Button>
