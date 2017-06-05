@@ -20,22 +20,22 @@
 	  <left>
     <VBox>
         <padding><Insets left="30"></Insets></padding>
-        <Button text="1. Action"></Button>
-        <Button text="2. Action"></Button>
-        <Button text="3. Action"></Button>
-        <Button text="4. Action"></Button>
-        <Button text="5. Action"></Button>
+        <Button text="1. Action A" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="2. Action AB" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="3. Action ABC" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="4. Action X" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="5. Action Y" minWidth="200" alignment="CENTER_LEFT"></Button>
     </VBox>
     </left>
     
     <center>
-    <TextArea>
+    <TextArea text="Input">
     <padding><Insets right="30"/></padding>
     </TextArea>
     </center>
     
     <right>
-    <TextArea>
+    <TextArea text="Output">
     <padding><Insets right="30"/></padding>
     </TextArea>
     </right>
