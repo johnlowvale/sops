@@ -1,7 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.BorderPane?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1">
-	 <!-- TODO Add Nodes -->
+
+<!-- classes -->
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.textfield.*?>
+
+<!-- holder pane -->
+<BorderPane fx:controller="datdq.sops.Main" xmlns:fx="http://javafx.com/fxml/1">    
+    <top>
+    <Label text="String Operations Demo - DSA Assignment 2 - datdqgt00570@fpt.edu.vn">
+    <padding><Insets left="30" top="30" bottom="30"></Insets></padding>
+    </Label>
+    </top>
+   
+	  <left>
+    <VBox>
+        <padding><Insets left="30"></Insets></padding>
+        <Button text="1. Action"></Button>
+        <Button text="2. Action"></Button>
+        <Button text="3. Action"></Button>
+        <Button text="4. Action"></Button>
+        <Button text="5. Action"></Button>
+    </VBox>
+    </left>
+    
+    <center>
+    <TextArea>
+        <padding><Insets right="30"/></padding>
+    </TextArea>
+    </center>
+    
+    <right>
+    <TextArea>
+        <padding><Insets right="30"/></padding>
+    </TextArea>
+    </right>
+    
+    <bottom>
+    <Label text="">
+    <padding><Insets bottom="10"/></padding>
+    </Label>
+    </bottom>
 </BorderPane>
 
 <!-- end of file -->

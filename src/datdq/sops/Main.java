@@ -29,6 +29,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+            primaryStage.setMaximized(true);
             primaryStage.setTitle("Sops - String Operations Demo - datdqgt00570@fpt.edu.vn");
      
             // Load root layout from fxml file.
