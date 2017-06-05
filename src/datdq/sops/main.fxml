@@ -30,13 +30,13 @@
     
     <center>
     <TextArea>
-        <padding><Insets right="30"/></padding>
+    <padding><Insets right="30"/></padding>
     </TextArea>
     </center>
     
     <right>
     <TextArea>
-        <padding><Insets right="30"/></padding>
+    <padding><Insets right="30"/></padding>
     </TextArea>
     </right>
     
