@@ -8,35 +8,45 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.textfield.*?>
+<?import javafx.scene.layout.VBox?>
 
 <!-- holder pane -->
 <BorderPane fx:controller="datdq.sops.Main" stylesheets="datdq/sops/main.css" 
 xmlns:fx="http://javafx.com/fxml/1">    
     <top>
-    <Label id="title-label" text="String Operations Demo - DSA Assignment 2 - datdqgt00570@fpt.edu.vn">
-    <padding><Insets left="30" top="30" bottom="30"></Insets></padding>
-    </Label>
+    <VBox>
+        <Label id="title-label" text="String Operations Demo - DSA Assignment 2 - datdqgt00570@fpt.edu.vn">
+        <padding><Insets left="30" top="30" bottom="0"></Insets></padding>
+        </Label>
+        
+        <Label text="Notes: Left text box is for input, right text box shows output">
+        <padding><Insets left="30" top="0" bottom="30"></Insets></padding>
+        </Label>
+    </VBox>
     </top>
    
 	  <left>
     <VBox>
         <padding><Insets left="30"></Insets></padding>
-        <Button text="1. Action A" onAction="#test" minWidth="200" alignment="CENTER_LEFT"></Button>
-        <Button text="2. Action AB" minWidth="200" alignment="CENTER_LEFT"></Button>
-        <Button text="3. Action ABC" minWidth="200" alignment="CENTER_LEFT"></Button>
-        <Button text="4. Action X" minWidth="200" alignment="CENTER_LEFT"></Button>
-        <Button text="5. Action Y" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="1. Reset Data" onAction="#resetData" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="2. Concatenate" onAction="#concatenate" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="3. Find Character" onAction="#findCharacter" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="4. Get Length" onAction="#getLength" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="5. To Lowercase" onAction="#toLowercase" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="6. Substring" onAction="#getSubstring" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="7. Trim Text" onAction="#trimText" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="8. Sort Lines" onAction="#sortLines" minWidth="200" alignment="CENTER_LEFT"></Button>
     </VBox>
     </left>
     
     <center>
-    <TextArea text="Input">
+    <TextArea fx:id="inputText" text="">
     <padding><Insets right="30"/></padding>
     </TextArea>
     </center>
     
     <right>
-    <TextArea text="Output">
+    <TextArea fx:id="outputText" text="">
     <padding><Insets right="30"/></padding>
     </TextArea>
     </right>

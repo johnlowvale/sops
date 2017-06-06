@@ -9,13 +9,24 @@ package datdq.sops;
 
 //javafx classes
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.Window;
 
 /**
  * Main application class
@@ -25,7 +36,15 @@ public class Main extends Application {
 
     //properties
     public Stage      primaryStage;
+    public Scene      rootScene;
     public BorderPane rootLayout;
+    
+    //fxml elements
+    @FXML
+    public TextArea inputText;
+    
+    @FXML
+    public TextArea outputText;
   
     /**
      * Show a message box
@@ -39,6 +58,171 @@ public class Main extends Application {
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.initOwner(primaryStage);  
         alert.show();
+    }
+    
+    /**
+     * Get screen width
+     * @return
+     */
+    public int getScreenWidth() {
+        Rectangle2D bound = Screen.getPrimary().getVisualBounds();
+        return (int)bound.getWidth();
+    }
+    
+    /**
+     * Get screen height
+     * @return
+     */
+    public int getScreenHeight() {
+        Rectangle2D bound = Screen.getPrimary().getVisualBounds();
+        return (int)bound.getHeight();
+    }
+    
+    /**
+     * Show prompt dialog to get input
+     * @param title
+     * @return
+     */
+    public String getInput(String title) {
+        Stage  dialog = new Stage();
+        Window owner  = inputText.getScene().getWindow();
+        int scrWidth  = getScreenWidth();
+        int scrHeight = getScreenHeight();
+        int dialogW   = 500;
+        int dialogH   = 200;
+
+        dialog.setTitle(title);
+        dialog.initOwner(owner);
+        dialog.initStyle(StageStyle.UTILITY);
+        dialog.initModality(Modality.WINDOW_MODAL);
+        dialog.setWidth(dialogW);
+        dialog.setHeight(dialogH);
+        dialog.setX((scrWidth-dialogW)/2);
+        dialog.setY((scrHeight-dialogH)/2);
+
+        TextField textField    = new TextField();
+        Button    submitButton = new Button("OK");
+        submitButton.setDefaultButton(true);
+        submitButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override 
+            public void handle(ActionEvent t) {
+                dialog.close();
+            }
+        });
+        textField.setMinHeight(TextField.USE_PREF_SIZE);
+
+        final VBox layout = new VBox(10);
+        layout.setAlignment(Pos.CENTER_RIGHT);
+        layout.setStyle("-fx-background-color: azure; -fx-padding: 10;");
+        layout.getChildren().setAll(
+            textField, 
+            submitButton
+        );
+
+        dialog.setScene(new Scene(layout));
+        dialog.showAndWait();
+
+        String result = textField.getText();
+        return result;
+    }
+    
+    /**
+     * Reset input to default text
+     */
+    @FXML
+    public void resetData() {
+        //inputText = (TextArea)rootScene.lookup("#inputText");
+        inputText.setText("FIRST\n158\n124\n238\n707\n608\n250\n888\nABC\nXYZ");
+    }
+    
+    /**
+     * Concatenate lines in input box
+     */
+    @FXML
+    public void concatenate() {
+      
+        //get input
+        String   input = inputText.getText();
+        String[] strs  = input.split("\n");
+        
+        //make result
+        String result = Algos.concatStrs(strs);
+        
+        //show result
+        outputText.setText("Lines concatenated:\n"+result);
+    }
+    
+    /**
+     * Find a character in
+     */
+    @FXML
+    public void findCharacter() {
+        String str   = inputText.getText();
+        String chStr = getInput("Enter a single character");        
+        char   character;
+        
+        //check input
+        if (chStr.length()!=1) {
+            showMsg("Message","Please enter exactly 1 character");
+            return;
+        }
+        
+        character = chStr.charAt(0);
+        
+        //call algo
+        int pos = Algos.findFirstCharacter(str, character);
+        
+        //result
+        if (pos==-1)
+            outputText.setText("Character '"+character+"' not found in\n'"+str+"'");
+        else
+            outputText.setText("First character found at index "+pos);
+    }
+    
+    /**
+     * Get input length
+     */
+    @FXML
+    public void getLength() {
+        int len = inputText.getText().length();
+        
+        //result
+        outputText.setText("Length of input is "+len);
+    }
+    
+    /**
+     * To lower case
+     */
+    @FXML
+    public void toLowercase() {
+        String input = inputText.getText();
+        
+        //get result
+        String result = Algos.toLowercase(input);
+        
+        //set output
+        outputText.setText("Lowercase text is:\n"+result);
+    }
+    
+    /**
+     * Get substring
+     */
+    @FXML
+    public void getSubstring() {
+    }
+    
+    /**
+     * Trim the whole text
+     */
+    @FXML
+    public void trimText() {
+    }
+    
+    /**
+     * Sort lines
+     */
+    @FXML
+    public void sortLines() {
     }
     
     /**
@@ -67,6 +251,7 @@ public class Main extends Application {
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
+            this.rootScene = scene;
             primaryStage.setScene(scene);
             primaryStage.show();
         } 
