@@ -66,6 +66,49 @@ public class Algos {
         
         return result;
     }
+    
+    /**
+     * Get a substring
+     * @param str
+     * @param left
+     * @param right
+     * @return
+     */
+    public static String substring(String str,int left,int right) {
+        String result = "";
+        int    index  = left;
+        
+        while (index<right && index<str.length()) {
+            result += str.charAt(index);
+            index++;
+        }
+        
+        return result;
+    }//substring
+    
+    /**
+     * Trim a string on both sides
+     * @param str
+     * @return
+     */
+    public static String trimStr(String str) {
+        if (str.length()==0)
+            return str;
+      
+        //initial indices
+        int left  = 0;
+        int right = str.length()-1;
+        
+        //increase left index
+        while (left<str.length() && (str.charAt(left)==(char)32 || str.charAt(left)==(char)10))
+            left++;
+        
+        //decrease right index
+        while (right>left && (str.charAt(right)==(char)32 || str.charAt(right)==(char)10))
+            right--;
+        
+        return substring(str,left,right+1);
+    }
 }
 
 //end of file

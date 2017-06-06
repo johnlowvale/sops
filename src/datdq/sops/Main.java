@@ -51,9 +51,9 @@ public class Main extends Application {
      * @param title
      * @param text
      */
-    public void showMsg(String title,String text) {
+    public void showMsg(String text) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
+        alert.setTitle("Message");
         alert.setHeaderText(text);
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.initOwner(primaryStage);  
@@ -163,7 +163,7 @@ public class Main extends Application {
         
         //check input
         if (chStr.length()!=1) {
-            showMsg("Message","Please enter exactly 1 character");
+            showMsg("Please enter exactly 1 character");
             return;
         }
         
@@ -209,6 +209,34 @@ public class Main extends Application {
      */
     @FXML
     public void getSubstring() {
+      
+        //get input
+        String leftIndexStr  = getInput("Enter left index");
+        String rightIndexStr = getInput("Enter right index"); //substr won't include this index
+        int    leftIndex     = 0;
+        int    rightIndex    = 0;
+        
+        try {
+            leftIndex  = Integer.parseInt(leftIndexStr);
+            rightIndex = Integer.parseInt(rightIndexStr); 
+        }
+        catch (Exception exception) {
+            showMsg("Please enter integer values");
+            return;
+        }
+        
+        //current text
+        String text = inputText.getText();
+        
+        //check input
+        if (leftIndex<0) {
+            showMsg("Left index must be >= 0");
+            return;
+        }
+        
+        //get result
+        String result = Algos.substring(text,leftIndex,rightIndex);
+        outputText.setText("Substring is:\n"+result);
     }
     
     /**
@@ -216,6 +244,15 @@ public class Main extends Application {
      */
     @FXML
     public void trimText() {
+        
+        //get input
+        String input = inputText.getText();
+        
+        //get result
+        String result = Algos.trimStr(input);
+        
+        //show result
+        outputText.setText("Trimmed text is:\n"+result);
     }
     
     /**
@@ -230,7 +267,7 @@ public class Main extends Application {
      */
     @FXML
     public void test() {
-        showMsg("Message","Test!");
+        showMsg("Test!");
     }
     
     /**
