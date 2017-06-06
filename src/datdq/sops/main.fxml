@@ -35,7 +35,7 @@ xmlns:fx="http://javafx.com/fxml/1">
         <Button text="5. To Lowercase" onAction="#toLowercase" minWidth="200" alignment="CENTER_LEFT"></Button>
         <Button text="6. Substring" onAction="#getSubstring" minWidth="200" alignment="CENTER_LEFT"></Button>
         <Button text="7. Trim Text" onAction="#trimText" minWidth="200" alignment="CENTER_LEFT"></Button>
-        <Button text="8. Sort Lines" onAction="#sortLines" minWidth="200" alignment="CENTER_LEFT"></Button>
+        <Button text="8. Sort Numbers" onAction="#sortLines" minWidth="200" alignment="CENTER_LEFT"></Button>
     </VBox>
     </left>
     

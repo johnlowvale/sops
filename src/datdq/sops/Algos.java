@@ -109,6 +109,64 @@ public class Algos {
         
         return substring(str,left,right+1);
     }
+    
+    /**
+     * Get character at reverse index in a string, last character has index of 0
+     * @param str
+     * @param index
+     * @return
+     */
+    public static char reverseCharAt(String str,int index) {
+        try {
+            int lastIndex = str.length()-1;
+            return str.charAt(lastIndex-index);
+        }
+        catch (Exception exception) {
+            return (char)0;
+        }
+    }
+    
+    /**
+     * Sort a list of string at certain reverse index (mainly for number, not string)
+     * @param strs
+     * @param index
+     * @return
+     */
+    public static String[] sortAtDigit(String[] strs,int digitIndex) {
+        String[]  newStrs    = new String[strs.length];
+        boolean[] extracteds = new boolean[strs.length];
+        
+        //init
+        for (int index=0; index<extracteds.length; index++)
+            extracteds[index] = false;
+        
+        //radical extract using digits 0..9, all other characters are put after numerical digits
+        for (int digit=0; digit<=9; digit++) {
+            char ch = (char)(digit+48); //'0' == 48
+            ???
+        }
+    }
+    
+    /**
+     * Radixsort a string list using least-significant-digit (LSD)
+     * @param strs
+     * @return
+     */
+    public static String[] radixSort(String[] strs) {
+      
+        //find max length
+        int maxLen = -1;
+        
+        for (int index=0; index<strs.length; index++) 
+            if (strs[index].length() > maxLen)
+                maxLen = strs[index].length();
+        
+        //sort from least significant digit
+        for (int index=0; index<maxLen; index++)
+            strs = sortAtDigit(strs,index); //index counted from right
+        
+        return strs;
+    }
 }
 
 //end of file
