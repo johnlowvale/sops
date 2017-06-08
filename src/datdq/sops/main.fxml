@@ -19,7 +19,11 @@ xmlns:fx="http://javafx.com/fxml/1">
         <padding><Insets left="30" top="30" bottom="0"></Insets></padding>
         </Label>
         
-        <Label text="Notes: Left text box is for input, right text box shows output">
+        <Label text="NOTE: Left text box is for input, right text box shows output">
+        <padding><Insets left="30" top="0" bottom="0"></Insets></padding>
+        </Label>
+        
+        <Label text="NOTE: It is recommended to press 'Reset Data' before clicking a feature button">
         <padding><Insets left="30" top="0" bottom="30"></Insets></padding>
         </Label>
     </VBox>

@@ -7,6 +7,10 @@
  */
 package datdq.sops;
 
+//java core classes
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Algorithm class
  * @author johnlowvale
@@ -132,38 +136,35 @@ public class Algos {
      * @param index
      * @return
      */
-    public static String[] sortAtDigit(String[] strs,int digitIndex) {
-        String[]  newStrs    = new String[strs.length];
-        boolean[] extracteds = new boolean[strs.length];
+    public static List<String> sortAtDigit(List<String> strs,int digitIndex) {
+        List<String> newStrs = new ArrayList<String>();
         
-        //init
-        for (int index=0; index<extracteds.length; index++)
-            extracteds[index] = false;
+        //48='0', 57='9'
+        for (char ch=(char)48; ch<=(char)57; ch++)
+            for (int index=0; index<strs.size(); index++)
+                if (reverseCharAt(strs.get(index),digitIndex)==ch)
+                    newStrs.add(strs.get(index));
         
-        //radical extract using digits 0..9, all other characters are put after numerical digits
-        for (int digit=0; digit<=9; digit++) {
-            char ch = (char)(digit+48); //'0' == 48
-            ???
-        }
+        return newStrs;
     }
     
     /**
-     * Radixsort a string list using least-significant-digit (LSD)
+     * Radixsort a string list using most-significant-digit (MSD)
      * @param strs
      * @return
      */
-    public static String[] radixSort(String[] strs) {
+    public static List<String> radixSort(List<String> strs) {
       
         //find max length
         int maxLen = -1;
         
-        for (int index=0; index<strs.length; index++) 
-            if (strs[index].length() > maxLen)
-                maxLen = strs[index].length();
+        for (int index=0; index<strs.size(); index++) 
+            if (strs.get(index).length() > maxLen)
+                maxLen = strs.get(index).length();
         
-        //sort from least significant digit
-        for (int index=0; index<maxLen; index++)
-            strs = sortAtDigit(strs,index); //index counted from right
+        //sort from most significant digit
+        for (int index=maxLen-1; index>=0; index--)
+            strs = sortAtDigit(strs,index); //index counted from MSD
         
         return strs;
     }

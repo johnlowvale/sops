@@ -7,6 +7,10 @@
  */
 package datdq.sops;
 
+//java core classes
+import java.util.ArrayList;
+import java.util.List;
+
 //javafx classes
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -132,7 +136,7 @@ public class Main extends Application {
     @FXML
     public void resetData() {
         //inputText = (TextArea)rootScene.lookup("#inputText");
-        inputText.setText("FIRST\n158\n124\n238\n707\n608\n250\n888\nABC\nXYZ");
+        inputText.setText("FIRST\n999\n158\n124\n238\n707\n608\n250\n888\nABC\nXYZ");
     }
     
     /**
@@ -260,6 +264,33 @@ public class Main extends Application {
      */
     @FXML
     public void sortLines() {
+        
+        //get input
+        String   input = inputText.getText();
+        String[] lines = input.split("\n");
+        
+        //trim
+        for (int index=0; index<lines.length; index++)
+            lines[index] = lines[index].trim();
+        
+        //take only numbers
+        List<String> numberStrs = new ArrayList<String>();
+        
+        for (int index=0; index<lines.length; index++) {
+            try {
+                Integer.valueOf(lines[index]); //-->jump to 'catch' if fails
+                numberStrs.add(lines[index]);
+            }
+            catch (Exception exception) {
+                //do nothing
+            }
+        }//for
+        
+        //get result
+        List<String> sortedStrs = Algos.radixSort(numberStrs);
+        
+        //show in ui
+        outputText.setText("Sorted numbers:\n"+String.join("\n",sortedStrs));
     }
     
     /**
